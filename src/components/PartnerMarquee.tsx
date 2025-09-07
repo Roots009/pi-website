@@ -1,27 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { partners } from '@/lib/partners-data';
 
 const TechnologyPartnersSection: React.FC = () => {
-  // Duplicate logos array for seamless infinite scroll
-  const logos = [...partners, ...partners];
+  // State to toggle the color/grayscale effect
+  const [isColored, setIsColored] = useState(false);
+
+  // Duplicate logos array twice more for a seamless infinite scroll
+  const logos = [...partners, ...partners, ...partners, ...partners];
 
   return (
     <div
-      className="overflow-hidden"
+      className="overflow-hidden cursor-pointer p-4 md:p-8"
+      onClick={() => setIsColored(!isColored)}
       style={{
-        height: '80px',  // Reduced height
+        height: '150px',
         paddingTop: '8px',
         paddingBottom: '8px',
-        backgroundColor: '#2c4a5c',
-        maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+        background: '#ffff',
       }}
     >
       <motion.div
-        className="flex gap-x-16 items-center"
-        animate={{ x: ['0%', '-50%'] }} // Animate half width for continuous effect
+        className="flex gap-x-16 items-center min-h-[40px]"
+        // Animate half the width to create a seamless loop with 4 sets
+        animate={{ x: ['0%', '-50%'] }} 
         transition={{
           ease: 'linear',
           duration: 30,
@@ -33,8 +37,8 @@ const TechnologyPartnersSection: React.FC = () => {
             key={idx}
             src={logo}
             alt={`partner-logo-${idx}`}
-            className="h-10 w-auto flex-shrink-0"  // smaller height (40px)
-            style={{ maxHeight: '60px' }}
+            className={`w-auto flex-shrink-0 transition-filter duration-700 ease-in-out ${isColored ? '' : 'grayscale'}`}
+            style={{ maxHeight: '80px', width: 'auto' }}
           />
         ))}
       </motion.div>

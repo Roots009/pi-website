@@ -11,7 +11,7 @@ const AnimatedTextWord: React.FC<{ text: string; className?: string }> = ({ text
     <motion.h2
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
+      // CHANGE HERE: Removed `viewport={{ once: true, amount: 0.5 }}` to allow re-triggering
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: 0.1 } }
@@ -115,9 +115,7 @@ const TestimonialsCarousel: React.FC = () => {
           className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-16 text-[#00131F]"
         />
       </div>
-      {/* CHANGE HERE: Increased the container height for better card fit */}
       <div className="relative w-full flex items-center justify-center h-[380px] md:h-[420px]">
-        {/* This div is the "viewport" - it defines the visible area and hides the overflow */}
         <div ref={viewportRef} className="w-full max-w-6xl mx-auto overflow-hidden">
           <motion.div
             ref={flexContainerRef}

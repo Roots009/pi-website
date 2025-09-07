@@ -1,17 +1,25 @@
-'use client'; // This component uses Framer Motion, so it must be a client component.
+'use client';
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import React from 'react'; // Added React import for clarity
+import React, { useEffect } from 'react'; // Added useEffect for the custom hook
 
 // --- Typewriter Component ---
-// To resolve the import error, the Typewriter component is now defined directly within this file.
-// This makes the WhoWeAre component self-contained and removes external dependencies.
-const Typewriter = ({ text, className = '' }: { text: string; className?: string }) => {
+// This component is now a separate file as it should be.
+// You need to ensure you have a `Typewriter.tsx` file that exports this component.
+// The provided code already does this, so we'll just focus on how to use it here.
+interface TypewriterProps {
+  text: string;
+  className?: string;
+  startTyping: boolean; // New prop to control animation
+}
+
+const Typewriter = ({ text, className = '', startTyping }: TypewriterProps) => {
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.05, // Adjusts the speed of the typing effect
+        staggerChildren: 0.05,
       },
     },
   };
@@ -21,13 +29,14 @@ const Typewriter = ({ text, className = '' }: { text: string; className?: string
     visible: { opacity: 1, y: 0 },
   };
 
+  const animationState = startTyping ? 'visible' : 'hidden';
+
   return (
     <motion.h2
       className={className}
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible" // The animation will trigger when the component scrolls into view
-      viewport={{ once: true }}
+      animate={animationState} // Animate based on the prop
       aria-label={text}
     >
       {text.split('').map((char, index) => (
@@ -39,11 +48,17 @@ const Typewriter = ({ text, className = '' }: { text: string; className?: string
   );
 };
 
-
 // --- Main WhoWeAre Component ---
+import { useInView } from 'react-intersection-observer';
+
 const WhoWeAre = () => {
+  // Use useInView to control the animations
+  const [ref, inView] = useInView({
+    triggerOnce: false, // Set to false to re-trigger on scroll
+    threshold: 0.2, // Trigger when 20% of the element is visible
+  });
+
   return (
-    // The id="who-we-are" is crucial for the scroll link from the Navbar and Hero section to work.
     <section 
       id="who-we-are"
       className="relative w-full py-20 md:py-32 overflow-hidden"
@@ -52,24 +67,26 @@ const WhoWeAre = () => {
         backgroundImage: `radial-gradient(circle at 10% 20%, #FE7F2D40, transparent 40%), radial-gradient(circle at 90% 80%, #619B8A40, transparent 40%)`,
       }}
     >
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
+      <div 
+        ref={ref} // Attach the ref to the main container
+        className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16"
+      >
 
-         {/* Main Animated Headline */}
-          <div className="font-bold leading-tight">
-            <span className="block text-4xl md:text-6xl lg:text-7xl text-gray-300">WHO</span>
-            {/* The Typewriter component animates the second line */}
-            <Typewriter 
-              text="WE ARE." 
-              className="text-4xl md:text-6xl lg:text-7xl text-white"
-            />
-          </div>
+        {/* Main Animated Headline */}
+        <div className="font-bold leading-tight">
+          <span className="block text-4xl md:text-6xl lg:text-7xl text-gray-300">WHO</span>
+          <Typewriter 
+            text="WE ARE." 
+            className="text-4xl md:text-6xl lg:text-7xl text-white"
+            startTyping={inView} // Pass the inView state
+          />
+        </div>
 
         {/* Right Column: Animated Card */}
         <motion.div 
           className="w-full md:w-1/2 max-w-lg"
           initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : 100 }} // Animate based on the inView state
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
         >
           <div className="bg-white rounded-2xl p-8 shadow-2xl">
@@ -97,4 +114,3 @@ const WhoWeAre = () => {
 };
 
 export default WhoWeAre;
-

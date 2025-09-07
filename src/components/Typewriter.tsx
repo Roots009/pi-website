@@ -1,28 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { JSX } from 'react';
+import React, { JSX } from 'react';
 
+// Define the props with a TypeScript interface
 interface TypewriterProps {
   text: string;
-  highlight?: string;         // The substring to highlight (e.g. "I.T")
-  highlightColor?: string;    // The color for the highlight (default: "#DA5D0C")
+  highlight?: string; // The substring to highlight (e.g. "I.T")
+  highlightColor?: string; // The color for the highlight (default: "#DA5D0C")
   className?: string;
+  startTyping: boolean; // Add the missing prop here
 }
 
 const Typewriter = ({
   text,
   highlight = 'I.T',
   highlightColor = '#DA5D0C',
-  className = ''
+  className = '',
+  startTyping, // Destructure the prop
 }: TypewriterProps) => {
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
         staggerChildren: 0.05,
-      }
-    }
+      },
+    },
   };
 
   const charVariants = {
@@ -73,7 +76,8 @@ const Typewriter = ({
       className={className}
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      // Conditionally animate based on the prop
+      animate={startTyping ? 'visible' : 'hidden'} 
       aria-label={text}
     >
       {renderCharsWithHighlight(text)}

@@ -13,6 +13,7 @@ const ContactSpotlightForm = () => {
         }
       `}</style>
       <div 
+        id="contact"
         className="min-h-screen flex items-center justify-center p-4"
         style={{
           backgroundImage: "linear-gradient(225deg, #3F281A, #6C3816, #4682B4, #9F4911, #DA5D0C)",
