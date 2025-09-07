@@ -1,4 +1,4 @@
-'use client'; // <-- This is the crucial fix.
+'use client'; 
 
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
@@ -7,6 +7,9 @@ import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import PartnerMarquee from '../components/PartnerMarquee';
 import ServicesSection from '../components/ServicesSection';
 import GrowthSection from '../components/GrowthSection';
+import ContactSpotlightForm from '../components/ContactSpotlightForm';
+import AddressSection from '@/components/AddressSection';
+import Footer from '../components/Footer';
 
 
 // This is the main entry point for your homepage.
@@ -31,7 +34,9 @@ export default function Home() {
         <PartnerMarquee />
         <ServicesSection />
         <GrowthSection />
-        
+        <ContactSpotlightForm />
+        <AddressSection />
+        <Footer />
         
         
         

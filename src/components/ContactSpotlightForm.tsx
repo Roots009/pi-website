@@ -1,140 +1,57 @@
-'use client';
+"use client";
 
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React from 'react';
 
-type ContactSpotlightFormProps = {
-  onSubmit?: (formData: { name: string; email: string; message: string; subscribe: boolean; terms: boolean }) => void;
-};
-
-export default function ContactSpotlightForm({ onSubmit }: ContactSpotlightFormProps) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    subscribe: false,
-    terms: false,
-  });
-
-  const [focused, setFocused] = useState(false);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  const target = e.target as HTMLInputElement; // Assert it as HTMLInputElement
-  const { name, value, type } = target;
-  const checked = target.checked; // Now TypeScript knows this exists
-
-  setFormData(prev => ({
-    ...prev,
-    [name]: type === 'checkbox' ? checked : value,
-  }));
-};
-
-
-  const handleFocus = () => setFocused(true);
-  const handleBlur = () => setFocused(false);
-
-  const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (onSubmit) onSubmit(formData);
-  };
-
+const ContactSpotlightForm = () => {
   return (
-    <section
-      className="relative bg-[#00131F] bg-opacity-90 rounded-3xl p-12 max-w-4xl mx-auto"
-      style={{
-        backgroundImage: "url('/rectangle28.png'), linear-gradient(180deg, #00131F 22.3%, #DA5D0C 104.85%)",
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-      }}
-      aria-label="Contact Us Form"
-      onMouseEnter={handleFocus}
-      onMouseLeave={handleBlur}
-    >
-      {/* Glowing heading */}
-      <h2
-        className={`text-white font-inter font-extrabold text-[96px] leading-none tracking-[6.72px] select-none mb-12 transition-opacity duration-300 ${
-          focused ? 'opacity-100' : 'opacity-30'
-        }`}
+    <>
+      <style jsx>{`
+        @keyframes gradient-animation {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+      <div 
+        className="min-h-screen flex items-center justify-center p-4"
+        style={{
+          backgroundImage: "linear-gradient(225deg, #3F281A, #6C3816, #4682B4, #9F4911, #DA5D0C)",
+          backgroundSize: "400% 400%",
+          animation: "gradient-animation 15s ease infinite",
+        }}
       >
-        Contact Us
-      </h2>
+        <div className="container mx-auto max-w-xl">
+          <div className="text-center mb-8">
+            <h1 className="text-5xl font-extrabold text-white mb-2 tracking-wide opacity-70" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+              Contact Us
+            </h1>
+          </div>
+          <form action="#" method="POST" className="space-y-6">
+            <input type="text" id="name" name="name" placeholder="Your Name" className="block w-full px-4 py-3 rounded-lg focus:outline-none backdrop-blur-md bg-white/10 text-white placeholder-white/60 text-center font-semibold transition-colors duration-300 hover:ring-2 hover:ring-white focus:bg-white/30" />
+            <input type="email" id="email-id" name="email-id" placeholder="Enter Email-Id" className="block w-full px-4 py-3 rounded-lg focus:outline-none backdrop-blur-md bg-white/10 text-white placeholder-white/60 text-center font-semibold transition-colors duration-300 hover:ring-2 hover:ring-white focus:bg-white/30" />
+            <textarea id="message" name="message" rows={5} placeholder="Message" className="block w-full px-4 py-3 rounded-lg focus:outline-none backdrop-blur-md bg-white/10 text-white placeholder-white/60 text-center font-semibold transition-colors duration-300 hover:ring-2 hover:ring-white focus:bg-white/30"></textarea>
 
-      <form onSubmit={handleFormSubmit} className="space-y-8" noValidate>
-        <div className="grid gap-6 md:grid-cols-2">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder="Your Name"
-            className={`w-full rounded-lg px-5 py-4 font-inter text-white bg-[#233d4d] border-2 outline-none transition-colors duration-300 ${
-              focused ? 'border-[#da5d0c]' : 'border-gray-600'
-            }`}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder="Your Email"
-            className={`w-full rounded-lg px-5 py-4 font-inter text-white bg-[#233d4d] border-2 outline-none transition-colors duration-300 ${
-              focused ? 'border-[#da5d0c]' : 'border-gray-600'
-            }`}
-            required
-          />
+            <div className="space-y-4 text-white text-sm">
+              <label className="flex items-center group">
+                <input type="checkbox" required className="appearance-none w-5 h-5 border-2 border-white rounded-md bg-transparent cursor-pointer relative transition-colors duration-300 focus:outline-none checked:bg-orange-500 checked:border-orange-500 hover:bg-orange-500" />
+                <span className="ml-2 opacity-70">I agree to the PROBOX Privacy Policy.</span>
+              </label>
+              <label className="flex items-center group">
+                <input type="checkbox" className="appearance-none w-5 h-5 border-2 border-white rounded-md bg-transparent cursor-pointer relative transition-colors duration-300 focus:outline-none checked:bg-orange-500 checked:border-orange-500 hover:bg-orange-500" />
+                <span className="ml-2 opacity-70">Get the latest from PROBOX.</span>
+              </label>
+            </div>
+
+            <div className="flex justify-end">
+              <button type="submit" className="px-8 py-3 bg-gray-800 text-white font-bold rounded-lg shadow-lg transition duration-300 ease-in-out hover:bg-orange-500 hover:shadow-orange-500/50 hover:ring-2 hover:ring-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+                Let's Connect
+              </button>
+            </div>
+          </form>
         </div>
-        <textarea
-          name="message"
-          rows={6}
-          value={formData.message}
-          onChange={handleInputChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Your Message"
-          className={`w-full rounded-lg px-5 py-4 font-inter text-white bg-[#233d4d] border-2 outline-none resize-none transition-colors duration-300 ${
-            focused ? 'border-[#da5d0c]' : 'border-gray-600'
-          }`}
-          required
-        />
-
-        {/* Checkboxes */}
-        <div className="flex flex-col space-y-4 font-inter text-white text-sm">
-          <label className="flex items-center space-x-3">
-            <input
-              type="checkbox"
-              name="subscribe"
-              checked={formData.subscribe}
-              onChange={handleInputChange}
-              className="h-5 w-5 rounded border-gray-300 bg-white checked:bg-[#da5d0c] checked:border-[#da5d0c]"
-            />
-            <span>Subscribe to newsletter</span>
-          </label>
-          <label className="flex items-center space-x-3">
-            <input
-              type="checkbox"
-              name="terms"
-              checked={formData.terms}
-              onChange={handleInputChange}
-              required
-              className="h-5 w-5 rounded border-gray-300 bg-white checked:bg-[#da5d0c] checked:border-[#da5d0c]"
-            />
-            <span>I agree to the Privacy Policy</span>
-          </label>
-        </div>
-
-        <button
-          type="submit"
-          className="w-[321px] h-[94px] rounded-[51px] bg-[#00131F] bg-opacity-80 font-inter font-semibold text-[36px] text-[#DA5D0C] transition-colors duration-300 hover:bg-opacity-100"
-        >
-          Let's Connect
-        </button>
-      </form>
-    </section>
+      </div>
+    </>
   );
-}
+};
+
+export default ContactSpotlightForm;

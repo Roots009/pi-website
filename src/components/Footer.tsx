@@ -1,68 +1,75 @@
-'use client';
+"use client";
 
 import React from 'react';
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer
-      className="bg-[rgba(20,47,63,0.91)] py-6 sm:py-8 px-4 sm:px-6 md:px-12 lg:px-24 text-center max-w-7xl mx-auto text-[#DA5D0C] font-inter transition-all duration-500"
-    >
-      <div className="mb-4 sm:mb-6">
-        <div
-          className="mx-auto font-bold text-lg sm:text-xl md:text-2xl"
-        >
-          ProBox InfoTech
+    <footer className="text-white" style={{ backgroundColor: '#00131F' }}>
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12">
+          {/* Logo and Description Section */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h2 className="text-2xl font-bold text-orange-500">ProBox InfoTech</h2>
+            <p className="mt-4 text-sm text-gray-400 max-w-sm">
+              Architecting digital futures through innovative technology solutions. Transform your business with our comprehensive digital transformation services.
+            </p>
+            {/* Social Media Icons */}
+            <div className="flex mt-6 space-x-4">
+              <a href="#" className="text-orange-500 hover:text-white transition-colors duration-300" aria-label="LinkedIn">
+                {/* Replace with your LinkedIn SVG icon */}
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.488 2.5s-2.488-1.119-2.488-2.5 1.11-2.5 2.488-2.5 2.488 1.119 2.488 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-5v16h5v-8.257c0-3.921 4.982-3.864 4.982 0v8.257h5v-10.927c0-2.417-1.164-3.528-3.328-3.528-1.749 0-2.522.955-3.082 1.839v-1.921z"/></svg>
+              </a>
+              <a href="#" className="text-orange-500 hover:text-white transition-colors duration-300" aria-label="Instagram">
+                {/* Replace with your Instagram SVG icon */}
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c-2.71 0-3.064 0-4.12 0-1.057.004-1.81.085-2.443.326-.62.247-1.178.618-1.72 1.16-1.077 1.07-1.448 2.46-1.577 3.992-.016.195-.033.435-.044.685-.01.25-.01.498-.01.768v4.004c0 2.71.018 3.063.045 4.12.01.24.027.48.043.684.13.498.286.99.5 1.45.22.46.52.87.89 1.25.37.37.79.68 1.25.89.46.22.95.37 1.45.5.24.04.49.06.68.08 1.05.02 1.4.04 4.1.04h4.004c2.71 0 3.06-.017 4.12-.045 1.05-.018 1.8-.098 2.44-.325.62-.248 1.18-.618 1.72-1.16.54-.54.91-1.1.1.1.25.38.38.74.5 1.2.37 1.05-.02.48.02.68-.02.68.04 1.05-.02 1.4.02 4.1.02.24.02.48.04.68.13.49.29.99.5 1.45.22.46.52.87.89 1.25.37.37.79.68 1.25.89.46.22.95.37 1.45.5.24.04.49.06.68.08 1.05.02 1.4.04 4.1.04h4.004c2.71 0 3.06-.017 4.12-.045 1.05-.018 1.8-.098 2.44-.325.62-.248 1.18-.618 1.72-1.16.54-.54.91-1.1 1.04-1.72.24-.63.32-1.39.32-2.44v-4.004c0-2.71-.018-3.063-.045-4.12-.01-.24-.027-.48-.043-.684-.13-.498-.286-.99-.5-1.45-.22-.46-.52-.87-.89-1.25-.37-.37-.79-.68-1.25-.89-.46-.22-.95-.37-1.45-.5-.24-.04-.49-.06-.68-.08-1.05-.02-1.4-.04-4.1-.04h-4.004c-2.71 0-3.06.017-4.12.045-1.05.018-1.8.098-2.44.325-.62.248-1.18.618-1.72 1.16-.54.54-.91 1.1-1.04 1.72-.24.63-.32 1.39-.32 2.44v4.004zm12.004-4.004c0 2.21-.49 2.54-1.47 2.89-.98.35-2.14.47-3.76.47h-5c-1.62 0-2.78-.12-3.76-.47-.98-.35-1.47-.68-1.47-2.89v-4.004c0-2.21.49-2.54 1.47-2.89.98-.35 2.14-.47 3.76-.47h5c1.62 0 2.78.12 3.76.47.98.35 1.47.68 1.47 2.89v4.004z"/></svg>
+              </a>
+              <a href="#" className="text-orange-500 hover:text-white transition-colors duration-300" aria-label="Twitter">
+                {/* Replace with your Twitter SVG icon */}
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.795-1.574 2.163-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.565 0-6.476 2.911-6.476 6.475 0 .504.056.991.16.14.97-.24-1.84.45-3.41-.61-1.82-.45-3.41-.61.94-.06.18-.08.18-.28.18-.46 0-.25.05-.48.16.59.04.14.07.29.07.44-.01.21-.02.43-.07.64-.13.56-.3.94-.55 1.4-.22.46-.52.87-.89 1.25-.37.37-.79.68-1.25.89-.46.22-.95.37-1.45.5.24.04.49.06.68.08 1.05.02 1.4.04 4.1.04h4.004c2.71 0 3.06-.017 4.12-.045 1.05-.018 1.8-.098 2.44-.325.62-.248 1.18-.618 1.72-1.16.54-.54.91-1.1 1.04-1.72.24-.63.32-1.39.32-2.44v-4.004c0-2.71-.018-3.063-.045-4.12-.01-.24-.027-.48-.043-.684-.13-.498-.286-.99-.5-1.45-.22-.46-.52-.87-.89-1.25-.37-.37-.79-.68-1.25-.89-.46-.22-.95-.37-1.45-.5-.24-.04-.49-.06-.68-.08-1.05-.02-1.4-.04-4.1-.04h-4.004c-2.71 0-3.06.017-4.12.045-1.05-.018-1.8-.098-2.44-.325-.62-.248-1.18-.618-1.72-1.16-.54-.54-.91-1.1-1.04-1.72-.24-.63-.32-1.39-.32-2.44v4.004zm12.004-4.004c0 2.21-.49 2.54-1.47 2.89-.98.35-2.14.47-3.76.47h-5c-1.62 0-2.78-.12-3.76-.47-.98-.35-1.47-.68-1.47-2.89v-4.004c0-2.21.49-2.54 1.47-2.89.98-.35 2.14-.47 3.76-.47h5c1.62 0 2.78.12 3.76.47.98.35 1.47.68 1.47 2.89v4.004z"/></svg>
+              </a>
+              <a href="#" className="text-orange-500 hover:text-white transition-colors duration-300" aria-label="YouTube">
+                {/* Replace with your YouTube SVG icon */}
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 16.5v-9l6 4.5-6 4.5z"/></svg>
+              </a>
+              <a href="#" className="text-orange-500 hover:text-white transition-colors duration-300" aria-label="Facebook">
+                {/* Replace with your Facebook SVG icon */}
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.5c-.724 0-.965.257-.965.986v1.492h2.467l-.32 2.522h-2.147v7.001h-2.522v-7.001h-2.193v-2.522h2.193v-1.696c0-1.854 1.18-2.678 3.237-2.678h2.646v2.531z"/></svg>
+              </a>
+            </div>
+          </div>
+          
+          {/* Services Column */}
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-semibold text-orange-500 mb-4">Services</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Managed IT Services</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Cloud Services</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Cyber Security</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">IIOT</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Network Management</a></li>
+            </ul>
+          </div>
+          
+          {/* Company Column */}
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-semibold text-orange-500 mb-4">Company</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Who We Are</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Career</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Terms Of Service</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors duration-300">Contact Us</a></li>
+            </ul>
+          </div>
         </div>
-        <p
-          className="mx-auto mt-2 sm:mt-3 text-sm sm:text-base md:text-lg leading-relaxed max-w-md sm:max-w-lg md:max-w-xl"
-        >
-          Architecting digital futures through innovative technology solutions. Transform your business with our comprehensive digital transformation services.
-        </p>
+        
+        {/* Copyright Section */}
+        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500">
+          <p className="mb-0">&copy; 2025 ProBox InfoTech. All Rights Reserved.</p>
+        </div>
       </div>
-      {/* Social Icons */}
-      <div className="flex justify-center space-x-4 sm:space-x-6 md:space-x-8 mb-6 sm:mb-8">
-        {/* YouTube */}
-        <a href="#" aria-label="YouTube" className="hover:opacity-70 transition-opacity duration-300">
-          <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#DA5D0C" d="M10 15l5.5-3-5.5-3v6z"/>
-            <path fill="#DA5D0C" d="M21.8 7.042C21.452 6.103 20.656 5.391 19.673 5.26 17.845 4.983 12 4.983 12 4.983s-5.844 0-7.674.278c-.985.132-1.783.843-2.129 1.783C2.1 8.034 2.1 12 2.1 12s0 3.966.097 4.958c.347.94 1.144 1.651 2.13 1.783 1.832.278 7.674.278 7.674.278s5.844 0 7.673-.278c.982-.132 1.777-.843 2.127-1.783.097-.992.097-4.958.097-4.958s0-3.966-.1-4.958z"/>
-          </svg>
-        </a>
-        {/* LinkedIn */}
-        <a href="#" aria-label="LinkedIn" className="hover:opacity-70 transition-opacity duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className="sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24">
-            <path fill="#DA5D0C" d="M6.94 19.14H3.706V8.75H6.94v10.39zM5.324 7.568a1.675 1.675 0 111.675-1.675 1.675 1.675 0 01-1.675 1.675zM20.29 19.143h-3.228v-5.749c0-1.379-.493-2.322-1.729-2.322a1.852 1.852 0 00-1.735 1.282 2.334 2.334 0 00-.114.837v5.952H10.44V8.75h3.091v1.358h.04a3.456 3.456 0 012.765-1.523c1.956 0 3.428 1.276 3.428 4.02z" />
-          </svg>
-        </a>
-        {/* Twitter */}
-        <a href="#" aria-label="Twitter" className="hover:opacity-70 transition-opacity duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className="sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24">
-            <path fill="#DA5D0C" d="M22.46 6.003c-.77.342-1.6.572-2.46.678a4.3 4.3 0 001.88-2.37 8.51 8.51 0 01-2.72 1.04 4.28 4.28 0 00-7.3 3.9A12.12 12.12 0 013 4.897a4.28 4.28 0 001.33 5.71 4.26 4.26 0 01-1.94-.53v.05a4.28 4.28 0 003.44 4.19 4.3 4.3 0 01-1.93.07 4.28 4.28 0 004 2.98 8.59 8.59 0 01-5.31 1.83c-.34 0-.68-.02-1.02-.06a12.1 12.1 0 006.55 1.92c7.87 0 12.17-6.52 12.17-12.17 0-.19 0-.37-.01-.55a8.7 8.7 0 002.14-2.22z"/>
-          </svg>
-        </a>
-        {/* Instagram */}
-        <a href="#" aria-label="Instagram" className="hover:opacity-70 transition-opacity duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className="sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24">
-            <path fill="#DA5D0C" d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm4.25 4.625a3.63 3.63 0 100 7.26 3.63 3.63 0 000-7.26zm5.209-.125a1.3 1.3 0 11-2.599 0 1.3 1.3 0 012.6 0zM12 8.875a3.13 3.13 0 013.125 3.125A3.13 3.13 0 0112 15.125 3.13 3.13 0 018.875 12 3.13 3.13 0 0112 8.875z"/>
-          </svg>
-        </a>
-        {/* Facebook */}
-        <a href="#" aria-label="Facebook" className="hover:opacity-70 transition-opacity duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className="sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24">
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M15.725 22V14.255H18.325L18.714 11.237H15.724V9.31C15.724 8.436 15.967 7.84 17.221 7.84H18.819V5.14C18.0452 5.05685 17.2673 5.01679 16.489 5.02C14.185 5.02 12.608 6.427 12.608 9.01V11.237H10V14.255H12.607V22H3.104C2.494 22 2 21.506 2 20.896V3.104C2 2.494 2.494 2 3.104 2H20.896C21.506 2 22 2.494 22 3.104V20.896C22 21.506 21.506 22 20.896 22H15.725Z"
-              fill="#DA5D0C"
-            />
-          </svg>
-        </a>
-      </div>
-      <p
-        className="mx-auto text-sm sm:text-base md:text-lg leading-relaxed"
-      >
-        © 2025 ProBox InfoTech. All Rights Reserved.
-      </p>
     </footer>
   );
-}
+};
+
+export default Footer;
