@@ -1,13 +1,16 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import Typewriter from './Typewriter';
 
-const HeroSection = () => {
+const WhoWeAreHero = () => {
+  const newHeroContent = {
+    title: "Who WE ARE.",
+    brief: "PROBOX is a PROactive, PROgressive, and out-of-box thinking organization with a clear vision and sound philosophy. We are equipped to meet challenges, follow modern approaches, and deliver excellence in customer services."
+  };
+
   return (
     <section
-      id="hero"
+      id="who-we-are-hero"
       className="relative h-screen w-full flex flex-col p-8 md:p-12 text-white overflow-hidden"
     >
       <style jsx global>{`
@@ -16,12 +19,11 @@ const HeroSection = () => {
           font-family: 'Inter', sans-serif;
         }
       `}</style>
-      
+
       <div 
         aria-hidden="true"
         className="absolute inset-0 z-0"
         style={{
-          // Using only the image as the direct background
           backgroundImage: `url('/Bgimage.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -32,20 +34,15 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto flex h-full items-end">
         {/* Main heading at the bottom left */}
         <div className="w-full md:w-1/2 mb-12">
-          <div className="leading-tight">
-            <span className="block text-4xl md:text-6xl lg:text-7xl text-gray-300 font-extralight">BRINGING</span>
-            <span className="whitespace-nowrap">
-              <span className="text-4xl md:text-6xl lg:text-7xl font-bold">SIMPLICITY</span>
-              <span className="font-extralight text-4xl md:text-6xl lg:text-7xl"> IN </span>
-              <span className="font-bold text-4xl md:text-6xl lg:text-7xl text-orange-500">I.T</span>
-            </span>
-          </div>
+          <h1 className="leading-tight text-4xl md:text-6xl lg:text-7xl text-gray-300 font-extralight">
+            {newHeroContent.title}
+          </h1>
         </div>
         
         {/* Top-right text block */}
         <div className="w-full md:w-1/2 flex justify-end items-start absolute top-12 right-12">
           <p className="max-w-md text-lg leading-relaxed text-gray-300 text-justify">
-            PROBOX is a leading ICT Solution Provider focused on Digital Infrastructure, Cloud and Security Solutions. We deliver technology expertise to harness technology advances, simplify IT complexity and optimize their environments today.
+            {newHeroContent.brief}
           </p>
         </div>
       </div>
@@ -53,4 +50,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default WhoWeAreHero;

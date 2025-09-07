@@ -1,12 +1,16 @@
-'use client'; // This is a client component because it uses state and hooks
+"use client";
 
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
 import { useScroll } from '../hooks/useScroll'; // Make sure the path is correct
 
 const Navbar = () => {
   const scrolled = useScroll(50);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
@@ -23,13 +27,13 @@ const Navbar = () => {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8 text-white">
-            <Link href="/#who-we-are" className="hover:text-probox-orange transition-colors duration-200">
+            <Link href="/#who-we-are" className="hover:text-probox-orange hover:font-bold transition-all duration-200 transform hover:scale-110">
               Who We Are
             </Link>
-            <Link href="/#services" className="hover:text-probox-orange transition-colors duration-200">
+            <Link href="/#services" className="hover:text-probox-orange hover:font-bold transition-all duration-200 transform hover:scale-110">
               Services
             </Link>
-            <Link href="/career" className="hover:text-probox-orange transition-colors duration-200">
+            <Link href="/career" className="hover:text-probox-orange hover:font-bold transition-all duration-200 transform hover:scale-110">
               Career
             </Link>
           </div>
@@ -72,13 +76,13 @@ const Navbar = () => {
         } transition-transform duration-300 ease-in-out md:hidden`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 text-white text-xl">
-          <Link href="/#who-we-are" className="hover:text-probox-orange" onClick={() => setIsMenuOpen(false)}>
+          <Link href="/#who-we-are" className="hover:text-probox-orange hover:font-bold transition-all transform hover:scale-110" onClick={() => setIsMenuOpen(false)}>
             Who We Are
           </Link>
-          <Link href="/#services" className="hover:text-probox-orange" onClick={() => setIsMenuOpen(false)}>
+          <Link href="/#services" className="hover:text-probox-orange hover:font-bold transition-all transform hover:scale-110" onClick={() => setIsMenuOpen(false)}>
             Services
           </Link>
-          <Link href="/career" className="hover:text-probox-orange" onClick={() => setIsMenuOpen(false)}>
+          <Link href="/career" className="hover:text-probox-orange hover:font-bold transition-all transform hover:scale-110" onClick={() => setIsMenuOpen(false)}>
             Career
           </Link>
           <Link href="/#contact" onClick={() => setIsMenuOpen(false)}>

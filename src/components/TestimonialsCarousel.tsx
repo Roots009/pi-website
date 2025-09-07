@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { testimonials } from '@/lib/testimonials-data';
 
 // This component for animating the title text is unchanged.
@@ -108,11 +108,11 @@ const TestimonialsCarousel: React.FC = () => {
   const centeredIndex = index % testimonials.length;
 
   return (
-    <section className="py-20 md:py-28 bg-[#233d4d] text-white overflow-hidden">
+    <section className="py-20 md:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-6 text-center">
         <AnimatedTextWord
           text="Trusted By Industry Leaders"
-          className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-16"
+          className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-16 text-[#00131F]"
         />
       </div>
       {/* CHANGE HERE: Increased the container height for better card fit */}

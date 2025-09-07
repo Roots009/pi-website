@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
@@ -54,53 +54,62 @@ const ServicesSection: React.FC = () => {
     const totalHeight = `${(services.length + 1) * 100}vh`;
 
     const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ['start start', 'end end']
+      target: containerRef,
+      offset: ['start start', 'end end']
     });
 
     const animationProgress = useTransform(scrollYProgress, [0, services.length / (services.length + 1)], [0, 1]);
 
     return (
-        <section ref={containerRef} className="relative bg-[#233d4d]" style={{ height: totalHeight }}>
-             <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center text-white text-center px-6 pointer-events-none">
-                <motion.h2 
-                    className="text-4xl md:text-5xl font-extrabold mb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    Our Services
-                </motion.h2>
-                <motion.p 
-                    className="max-w-2xl text-lg text-gray-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    From cloud infrastructure to cybersecurity, we provide end-to-end solutions to future-proof your business.
-                </motion.p>
-            </div>
-            {services.map((service, i) => {
-                const start = i / services.length;
-                const end = (i + 1) / services.length;
-                const targetScale = 1 - ((services.length - i - 1) * 0.05);
+      <section 
+        ref={containerRef} 
+        className="relative" 
+        style={{ 
+          height: totalHeight,
+          backgroundImage: `url('/Bgimage.jpg')`, // Using the Hero Section image
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center text-white text-center px-6 pointer-events-none">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-extrabold mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Services
+          </motion.h2>
+          <motion.p 
+            className="max-w-2xl text-lg text-gray-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            From cloud infrastructure to cybersecurity, we provide end-to-end solutions to future-proof your business.
+          </motion.p>
+        </div>
+        {services.map((service, i) => {
+          const start = i / services.length;
+          const end = (i + 1) / services.length;
+          const targetScale = 1 - ((services.length - i - 1) * 0.05);
 
-                return (
-                    <ServiceCard
-                        key={service.id}
-                        i={i}
-                        service={service}
-                        progress={animationProgress}
-                        range={[start, end]}
-                        targetScale={targetScale}
-                    />
-                );
-            })}
-        </section>
+          return (
+            <ServiceCard
+              key={service.id}
+              i={i}
+              service={service}
+              progress={animationProgress}
+              range={[start, end]}
+              targetScale={targetScale}
+            />
+          );
+        })}
+      </section>
     );
 };
 
 export default ServicesSection;
-
