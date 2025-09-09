@@ -1,21 +1,30 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, easeOut } from 'framer-motion';
 import Link from 'next/link';
 
 const WhoWeAre = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  // Animation variants with TypeScript-safe easing
   const leftVariants = {
     hidden: { opacity: 0, x: -100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.2 } },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { duration: 0.8, ease: easeOut, delay: 0.2 } 
+    },
   };
 
   const rightVariants = {
     hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.4 } },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      transition: { duration: 0.8, ease: easeOut, delay: 0.4 } 
+    },
   };
 
   return (
